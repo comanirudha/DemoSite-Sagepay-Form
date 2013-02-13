@@ -28,7 +28,6 @@ import org.broadleafcommerce.core.web.checkout.model.BillingInfoForm;
 import org.broadleafcommerce.core.web.checkout.model.OrderInfoForm;
 import org.broadleafcommerce.core.web.checkout.model.OrderMultishipOptionForm;
 import org.broadleafcommerce.core.web.checkout.model.ShippingInfoForm;
-import org.broadleafcommerce.core.web.controller.checkout.BroadleafCheckoutController;
 import org.broadleafcommerce.core.web.order.CartState;
 import org.broadleafcommerce.profile.core.domain.CustomerAddress;
 import org.broadleafcommerce.profile.web.core.CustomerState;
@@ -40,7 +39,10 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.broadleafcommerce.vendor.sagepay.web.controller.BroadleafSagepayFormController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,7 +51,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/checkout")
-public class CheckoutController extends BroadleafCheckoutController {
+public class CheckoutController extends BroadleafSagepayFormController {
 
     /*
     * The Checkout page for Heat Clinic will have the shipping information pre-populated 
@@ -121,6 +123,26 @@ public class CheckoutController extends BroadleafCheckoutController {
             BindingResult result) throws CheckoutException, PricingException, ServiceException {
         prepopulateCheckoutForms(CartState.getCart(), null, shippingForm, billingForm);
         return super.completeSecureCreditCardCheckout(request, response, model, billingForm, result);
+    }
+
+
+    @RequestMapping(value ="/saveBillingInfo", method = RequestMethod.POST) 
+    public @ResponseBody String redirectToSagepay(HttpServletRequest request, HttpServletResponse response, Model model,
+            @ModelAttribute("billingInfoForm") BillingInfoForm billingForm,
+            @ModelAttribute("shippingInfoForm") ShippingInfoForm shippingForm,
+            BindingResult result) throws PricingException {
+        prepopulateCheckoutForms(CartState.getCart(), null, shippingForm, billingForm);
+    	return super.redirectToSagepay(request, response, model, billingForm, result);
+    }
+    
+    @RequestMapping(value = "/confirmation", method = RequestMethod.GET)
+    public String processSagepayFormAuthorizeAndDebitSuccess(Model model, HttpServletRequest request, HttpServletResponse response) throws CheckoutException, PricingException {
+    	return super.processSagepayFormAuthorizeAndDebitSuccess(model, request, response);
+    }
+    
+    @RequestMapping(value = "/failure", method = RequestMethod.GET)
+    public String processSagepayFormAuthorizeAndDebitFailure(Model model, HttpServletRequest request, HttpServletResponse response) throws CheckoutException, PricingException {
+    	return super.processSagepayFormAuthorizeAndDebitFailure(model, request, response);
     }
 
     protected void prepopulateOrderInfoForm(Order cart, OrderInfoForm orderInfoForm) {

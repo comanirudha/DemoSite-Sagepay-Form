@@ -10,7 +10,8 @@
     <name>ecommerce</name>
     <url>http://www.blc-archetype.com</url>
     <properties>
-        <blc.version>2.0.6-SNAPSHOT</blc.version>
+        <blc.version>2.0.6-GA</blc.version>
+        <blc.sagepay.version>1.0.3-SNAPSHOT</blc.sagepay.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gwt.version>2.4.0</gwt.version>
     </properties>
@@ -238,6 +239,30 @@
                 <type>jar</type>
                 <classifier>tests</classifier>
                 <scope>test</scope>
+            </dependency>
+            <!-- SagePay -->
+            <dependency>
+                <groupId>com.broadleafcommerce</groupId>
+                <artifactId>broadleaf-sagepay-form</artifactId>
+                <version>${blc.sagepay.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.sagepay</groupId>
+                <artifactId>sagepay-api</artifactId>
+                <version>1.1.0</version>
+                <scope>compile</scope>
+                <type>jar</type>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>com.sagepay</groupId>
+                <artifactId>sagepay-util-nodep</artifactId>
+                <version>1.1.0</version>
+                <scope>compile</scope>
+                <type>jar</type>
+                <optional>true</optional>
             </dependency>
 
             <!-- Other dependencies -->

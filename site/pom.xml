@@ -115,6 +115,18 @@
             <artifactId>broadleaf-framework-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.broadleafcommerce</groupId>
+            <artifactId>broadleaf-sagepay-form</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sagepay</groupId>
+            <artifactId>sagepay-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sagepay</groupId>
+            <artifactId>sagepay-util-nodep</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
         </dependency>

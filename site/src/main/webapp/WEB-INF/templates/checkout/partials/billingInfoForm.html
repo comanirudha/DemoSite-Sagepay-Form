@@ -5,21 +5,22 @@
         <input type="hidden" name="address.country" value="US" />
 
         <span style="color: red; font-weight: bold;" th:text="${errorMessage}" />
+        <span style="color: red; font-weight: bold;" th:text="${param.errorMessage[0]}" />
 
         <div class="form30">
-            <label for="firstName"><span th:text="#{cart.firstName}">First Name</span></label>
+            <label for="firstName">First Name</label>
             <span class="error" th:if="${#fields.hasErrors('address.firstName')}" th:errors="*{address.firstName}"></span>
             <input type="text" th:field="*{address.firstName}" class="field30 required clearable" th:classappend="${#fields.hasErrors('address.firstName')}? 'fieldError'" th:disabled="${!validShipping}" />
         </div>
 
         <div class="form30 margin20">
-            <label for="lastName"><span th:text="#{cart.lastName}">Last Name</span></label>
+            <label for="lastName">Last Name</label>
             <span class="error" th:if="${#fields.hasErrors('address.lastName')}" th:errors="*{address.lastName}"></span>
             <input type="text" th:field="*{address.lastName}" class="field30 required clearable" th:classappend="${#fields.hasErrors('address.lastName')}? 'fieldError'" th:disabled="${!validShipping}" />
         </div>
 
         <div class="form30 margin20">
-            <label for="phone"><span th:text="#{cart.phone}">Phone</span></label>
+            <label for="phone">Phone</label>
             <span class="error_spacer" th:if="${#fields.hasErrors('address.firstName') or #fields.hasErrors('address.lastName')}">error</span>
             <input type="tel" th:field="*{address.primaryPhone}" class="field30 clearable" th:disabled="${!validShipping}"/>
         </div>
@@ -27,13 +28,13 @@
         <div class="clearfix"></div>
 
         <div class="form50">
-            <label for="address1"><span th:text="#{cart.address}">Address</span></label>
+            <label for="address1">Address Line 1</label>
             <span class="error" th:if="${#fields.hasErrors('address.addressLine1')}" th:errors="*{address.addressLine1}"></span>
             <input type="text" th:field="*{address.addressLine1}" class="field50 required clearable" th:classappend="${#fields.hasErrors('address.addressLine1')}? 'fieldError'" th:disabled="${!validShipping}" />
         </div>
 
         <div class="form50 margin20">
-            <label for="address2"><span th:text="#{cart.address2}">Address 2</span></label>
+            <label for="address2">Address Line 2</label>
             <span class="error_spacer" th:if="${#fields.hasErrors('address.addressLine1')}">error</span>
             <input type="text" th:field="*{address.addressLine2}" class="field50 clearable" th:disabled="${!validShipping}" />
         </div>
@@ -41,7 +42,7 @@
         <div class="clearfix"></div>
 
         <div class="form30">
-            <label for="city"><span th:text="#{cart.cityState}">City / State</span></label>
+            <label for="city">City/State</label>
             <span class="error" th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}"></span>
             <br th:if="${#fields.hasErrors('address.city')} and ${#fields.hasErrors('address.state')}"/>
             <span class="error" th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}"></span>
@@ -54,13 +55,13 @@
         </div>
 
         <div class="form25 margin20">
-            <label for="postal_code"><span th:text="#{cart.postalCode}">Postal Code</span></label>
+            <label for="postal_code">Postal Code</label>
             <span class="error" th:if="${#fields.hasErrors('address.postalCode')}" th:errors="*{address.postalCode}"></span>
             <input type="text" th:field="*{address.postalCode}" class="field25 clearable" th:classappend="${#fields.hasErrors('address.postalCode')}? 'fieldError'" th:disabled="${!validShipping}" />
         </div>
 
         <div style="float:right;">
-            <input type="submit" class="medium" th:value="#{cart.completOrder}" th:disabled="${!validShipping}" th:classappend="${validShipping}? 'red' : 'gray'"/>
+            <input type="submit" class="medium" value="Complete Order" th:disabled="${!validShipping}" th:classappend="${validShipping}? 'red' : 'gray'"/>
         </div>
 
     </div>

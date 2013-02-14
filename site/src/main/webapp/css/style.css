@@ -862,7 +862,8 @@ form.manage-account input[type="submit"] {
 
 #cart .right_content_billing {
     width: 580px;
-    float: right;
+    left: 157px;
+    position: relative;
 }
 
 

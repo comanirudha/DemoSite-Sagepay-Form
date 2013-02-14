@@ -136,13 +136,13 @@ public class CheckoutController extends BroadleafSagepayFormController {
     }
     
     @RequestMapping(value = "/confirmation", method = RequestMethod.GET)
-    public String processSagepayFormAuthorizeAndDebitSuccess(Model model, HttpServletRequest request, HttpServletResponse response) throws CheckoutException, PricingException {
-    	return super.processSagepayFormAuthorizeAndDebitSuccess(model, request, response);
+    public String processSagepayFormAuthorizeAndDebitSuccess(Model model, HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) throws CheckoutException, PricingException {
+    	return super.processSagepayFormAuthorizeAndDebitSuccess(model, request, response, redirectAttributes);
     }
     
     @RequestMapping(value = "/failure", method = RequestMethod.GET)
-    public String processSagepayFormAuthorizeAndDebitFailure(Model model, HttpServletRequest request, HttpServletResponse response) throws CheckoutException, PricingException {
-    	return super.processSagepayFormAuthorizeAndDebitFailure(model, request, response);
+    public String processSagepayFormAuthorizeAndDebitFailure(Model model, HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) throws CheckoutException, PricingException {
+    	return super.processSagepayFormAuthorizeAndDebitFailure(model, request, response, redirectAttributes);
     }
 
     protected void prepopulateOrderInfoForm(Order cart, OrderInfoForm orderInfoForm) {

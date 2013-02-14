@@ -4,6 +4,8 @@
 
         <input type="hidden" name="address.country" value="US" />
 
+        <span style="color: red; font-weight: bold;" th:text="${errorMessage}" />
+
         <div class="form30">
             <label for="firstName"><span th:text="#{cart.firstName}">First Name</span></label>
             <span class="error" th:if="${#fields.hasErrors('address.firstName')}" th:errors="*{address.firstName}"></span>

@@ -129,9 +129,7 @@ public class CheckoutController extends BroadleafSagepayFormController {
     @RequestMapping(value ="/saveBillingInfo", method = RequestMethod.POST) 
     public @ResponseBody String redirectToSagepay(HttpServletRequest request, HttpServletResponse response, Model model,
             @ModelAttribute("billingInfoForm") BillingInfoForm billingForm,
-            @ModelAttribute("shippingInfoForm") ShippingInfoForm shippingForm,
             BindingResult result) throws PricingException {
-        prepopulateCheckoutForms(CartState.getCart(), null, shippingForm, billingForm);
     	return super.redirectToSagepay(request, response, model, billingForm, result);
     }
     

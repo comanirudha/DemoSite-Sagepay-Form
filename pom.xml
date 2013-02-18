@@ -10,8 +10,8 @@
     <name>ecommerce</name>
     <url>http://www.blc-archetype.com</url>
     <properties>
-        <blc.version>2.0.7-SNAPSHOT</blc.version>
-        <blc.sagepay.version>1.0.3-SNAPSHOT</blc.sagepay.version>
+        <blc.version>2.0.7-GA</blc.version>
+        <blc.sagepay.version>1.0.3-GA</blc.sagepay.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gwt.version>2.4.0</gwt.version>
     </properties>
@@ -21,6 +21,16 @@
             <id>public releases</id>
             <name>public releases</name>
             <url>http://www.broadleafcommerce.org/nexus/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>sagepay-releases</id>
+            <name>sagepay-releases</name>
+            <url>http://nexus.broadleafcommerce.org/nexus/content/repositories/sagepay-form-releases</url>
+        </repository>
+        <repository>
+            <id>sagepay-snapshots</id>
+            <name>sagepay-snapshots</name>
+            <url>http://nexus.broadleafcommerce.org/nexus/content/repositories/sagepay-form-snapshots</url>
         </repository>
     </repositories>
     <build>
